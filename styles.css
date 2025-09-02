@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
 * {
     margin: 0;
@@ -9,38 +10,43 @@
 body {
     font-family: 'Roboto', sans-serif;
     line-height: 1.6;
-    color: #333;
-    background-color: #f4f4f4;
+    color: #e0e0e0;
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+    min-height: 100vh;
 }
 
 nav {
-    background: #333;
+    background: rgba(0, 0, 0, 0.8);
     position: fixed;
     width: 100%;
     top: 0;
     z-index: 1000;
+    backdrop-filter: blur(10px);
 }
 
 nav ul {
     list-style: none;
     display: flex;
     justify-content: center;
-    padding: 10px 0;
+    padding: 15px 0;
 }
 
 nav ul li {
-    margin: 0 20px;
+    margin: 0 25px;
 }
 
 nav ul li a {
-    color: white;
+    color: #00ff88;
     text-decoration: none;
-    font-weight: 400;
-    transition: color 0.3s;
+    font-weight: 700;
+    transition: all 0.3s;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 nav ul li a:hover {
-    color: #667eea;
+    color: #ff0080;
+    text-shadow: 0 0 10px #ff0080;
 }
 
 .container {
@@ -50,37 +56,64 @@ nav ul li a:hover {
 }
 
 header {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
+    background: linear-gradient(135deg, #00ff88 0%, #00aaff 50%, #ff0080 100%);
+    color: #000;
     padding: 100px 0;
     text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text fill="%23000" font-size="20" y="50%">GAME DEV</text></svg>') repeat;
+    opacity: 0.1;
+    animation: scroll 20s linear infinite;
+}
+
+@keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-100px); }
 }
 
 header h1 {
-    font-size: 3rem;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 2rem;
     margin-bottom: 10px;
+    text-shadow: 2px 2px #00ff88;
 }
 
 header p {
-    font-size: 1.2rem;
+    font-size: 1rem;
     margin-bottom: 5px;
+    font-weight: 700;
 }
 
 section {
-    padding: 60px 0;
-    background: white;
+    padding: 80px 0;
+    background: rgba(255, 255, 255, 0.05);
     margin-bottom: 20px;
+    border-top: 2px solid #00ff88;
+    border-bottom: 2px solid #00aaff;
 }
 
 section:nth-child(even) {
-    background: #f9f9f9;
+    background: rgba(0, 255, 136, 0.05);
 }
 
 h2 {
     text-align: center;
     margin-bottom: 40px;
-    font-size: 2.5rem;
-    color: #333;
+    font-size: 2rem;
+    color: #00ff88;
+    text-shadow: 0 0 10px #00ff88;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 1.5rem;
 }
 
 ul {
@@ -91,35 +124,98 @@ ul {
 }
 
 ul li {
-    background: #667eea;
-    color: white;
-    padding: 10px 20px;
+    background: linear-gradient(45deg, #00ff88, #00aaff);
+    color: #000;
+    padding: 12px 25px;
     margin: 10px;
-    border-radius: 20px;
-    font-weight: 300;
+    border-radius: 25px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 0 15px rgba(0, 255, 136, 0.5);
+    transition: all 0.3s;
+}
+
+ul li:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 20px rgba(0, 255, 136, 0.8);
 }
 
 .job, .edu {
     margin-bottom: 30px;
-    padding: 20px;
-    border-left: 5px solid #667eea;
-    background: #f9f9f9;
+    padding: 25px;
+    border-left: 5px solid #00ff88;
+    background: rgba(0, 255, 136, 0.1);
+    border-radius: 10px;
+    transition: all 0.3s;
+}
+
+.job:hover, .edu:hover {
+    background: rgba(0, 255, 136, 0.2);
+    transform: translateX(10px);
 }
 
 .job h3, .edu h3 {
     margin-bottom: 10px;
-    color: #333;
+    color: #00aaff;
+    font-size: 1.2rem;
 }
 
 .job p, .edu p {
-    color: #666;
+    color: #e0e0e0;
+}
+
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.project {
+    background: rgba(0, 170, 255, 0.1);
+    padding: 25px;
+    border-radius: 15px;
+    border: 2px solid #00aaff;
+    transition: all 0.3s;
+}
+
+.project:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 30px rgba(0, 170, 255, 0.3);
+}
+
+.project h3 {
+    color: #00ff88;
+    margin-bottom: 15px;
+}
+
+.project p {
+    color: #e0e0e0;
+    margin-bottom: 20px;
+}
+
+.project-link {
+    display: inline-block;
+    background: #ff0080;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 20px;
+    transition: all 0.3s;
+}
+
+.project-link:hover {
+    background: #00ff88;
+    color: #000;
+    box-shadow: 0 0 15px #00ff88;
 }
 
 footer {
-    background: #333;
-    color: white;
+    background: rgba(0, 0, 0, 0.8);
+    color: #00ff88;
     text-align: center;
-    padding: 20px 0;
+    padding: 30px 0;
+    border-top: 2px solid #00aaff;
 }
 
 @media (max-width: 768px) {
